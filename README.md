@@ -1,6 +1,6 @@
 ## 📦 What's Included
 
-**Modern Calculator** (`calculator.html`)
+**Modern Calculator** (`https://github.com/bitX4587/Calculator`)
 
 A beautiful, fully-functional calculator with advanced features.
 
