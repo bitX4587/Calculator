@@ -2,55 +2,126 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculator</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>CALC — AI Edition</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Orbitron:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <script src="index.js"></script>
   </head>
   <body>
-    <div class="calculator-container">
-      <h1>🧮 Modern Calculator</h1>
-
-      <div class="display">
-        <div class="expression" id="expression"></div>
-        <div class="result" id="result">0</div>
+    <div class="calc-wrapper">
+      <div class="calc-header">
+        <div class="calc-title">CALC</div>
+        <div class="ai-badge">AI POWERED</div>
       </div>
 
-      <div class="input-section">
-        <div class="input-group">
-          <input type="number" id="numberInput" placeholder="Enter number" />
+      <div class="calculator">
+        <!-- Display -->
+        <div class="display" id="display">
+          <div class="expression" id="expression"></div>
+          <div class="result" id="result">0</div>
+        </div>
+
+        <!-- AI Input -->
+        <div class="ai-input-section">
+          <div class="ai-label">ASK AI ANYTHING</div>
+          <div class="ai-input-wrapper">
+            <input
+              class="ai-input"
+              id="aiInput"
+              type="text"
+              placeholder="e.g. what's 15% of 340?"
+              onkeydown="if (event.key === 'Enter') askAI();"
+            />
+            <button
+              class="ai-send-btn"
+              id="aiBtn"
+              onclick="askAI()"
+              title="Ask AI"
+            >
+              ✦
+            </button>
+          </div>
+          <div class="ai-response" id="aiResponse"></div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-grid">
+          <button class="btn-clear" onclick="clearAll(this)">AC</button>
+          <button class="btn-function" onclick="toggleSign(this)">+/−</button>
+          <button class="btn-function" onclick="percent(this)">%</button>
+          <button class="btn-operator" onclick="appendOperator('/', this)">
+            ÷
+          </button>
+
+          <button class="btn-number" onclick="appendNumber('7', this)">
+            7
+          </button>
+          <button class="btn-number" onclick="appendNumber('8', this)">
+            8
+          </button>
+          <button class="btn-number" onclick="appendNumber('9', this)">
+            9
+          </button>
+          <button class="btn-operator" onclick="appendOperator('*', this)">
+            ×
+          </button>
+
+          <button class="btn-number" onclick="appendNumber('4', this)">
+            4
+          </button>
+          <button class="btn-number" onclick="appendNumber('5', this)">
+            5
+          </button>
+          <button class="btn-number" onclick="appendNumber('6', this)">
+            6
+          </button>
+          <button class="btn-operator" onclick="appendOperator('-', this)">
+            −
+          </button>
+
+          <button class="btn-number" onclick="appendNumber('1', this)">
+            1
+          </button>
+          <button class="btn-number" onclick="appendNumber('2', this)">
+            2
+          </button>
+          <button class="btn-number" onclick="appendNumber('3', this)">
+            3
+          </button>
+          <button class="btn-operator" onclick="appendOperator('+', this)">
+            +
+          </button>
+
+          <button class="btn-number" onclick="appendNumber('0', this)">
+            0
+          </button>
+          <button class="btn-number" onclick="appendNumber('.', this)">
+            .
+          </button>
+          <button class="btn-equals" onclick="calculate(this)">=</button>
+        </div>
+
+        <!-- History -->
+        <div class="history">
+          <div class="history-header">
+            <div class="history-title">HISTORY</div>
+            <button class="history-clear" onclick="clearHistory()">
+              CLEAR
+            </button>
+          </div>
+          <div class="history-list" id="historyList">
+            <div class="empty-history">no calculations yet</div>
+          </div>
         </div>
       </div>
-
-      <div class="button-grid">
-        <button class="btn-clear" onclick="clearAll()">AC</button>
-        <button class="btn-function" onclick="backspace()">⌫</button>
-        <button class="btn-operator" onclick="appendOperator('/')">÷</button>
-
-        <button class="btn-number" onclick="appendNumber('7')">7</button>
-        <button class="btn-number" onclick="appendNumber('8')">8</button>
-        <button class="btn-number" onclick="appendNumber('9')">9</button>
-        <button class="btn-operator" onclick="appendOperator('*')">×</button>
-
-        <button class="btn-number" onclick="appendNumber('4')">4</button>
-        <button class="btn-number" onclick="appendNumber('5')">5</button>
-        <button class="btn-number" onclick="appendNumber('6')">6</button>
-        <button class="btn-operator" onclick="appendOperator('-')">−</button>
-
-        <button class="btn-number" onclick="appendNumber('1')">1</button>
-        <button class="btn-number" onclick="appendNumber('2')">2</button>
-        <button class="btn-number" onclick="appendNumber('3')">3</button>
-        <button class="btn-operator" onclick="appendOperator('+')">+</button>
-
-        <button class="btn-number" onclick="appendNumber('0')">0</button>
-        <button class="btn-number" onclick="appendNumber('.')">.</button>
-        <button class="btn-equals" onclick="calculate()">=</button>
-      </div>
-
-      <div class="history">
-        <h3>History</h3>
-        <div id="historyList"></div>
-      </div>
     </div>
+
+    <script src="index.js"></script>
   </body>
 </html>
