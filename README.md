@@ -1,6 +1,6 @@
-# 📦 Modern Calculator
+# CALC — AI Edition 🧮✦
 
-A beautiful, fully-functional calculator with advanced features, built with vanilla JavaScript.
+A sleek, AI-powered calculator built with vanilla HTML, CSS, and JavaScript. Features a dark glassmorphic design with a built-in Claude AI assistant for natural language math queries.
 
 🔗 **Live Demo**: [https://bitx4587.github.io/Calculator](https://bitx4587.github.io/Calculator)
 
@@ -8,34 +8,94 @@ A beautiful, fully-functional calculator with advanced features, built with vani
 
 ## ✨ Features
 
-- **Gradient Design** — Modern purple gradient theme with glassmorphism effects
-- **Responsive Grid Layout** — Professional button layout with color-coded operations
-- **Calculation History** — Keeps track of your last 10 calculations
-- **Keyboard Support** — Full keyboard navigation (numbers, operators, Enter, Escape, Backspace)
-- **Smooth Animations** — Fade-in effects and button interactions
-- **Expression Display** — Shows your calculation as you type
-- **Error Handling** — Graceful error messages with auto-reset
-- **Mobile Responsive** — Adapts perfectly to any screen size
+- **AI Assistant** — Ask math questions in plain English (e.g. _"what's 15% of 340?"_) powered by Claude
+- **Live Expression Preview** — See your full expression update as you type
+- **Calculation History** — Stores up to 20 past calculations; click any to recall it
+- **Keyboard Support** — Full keyboard input (numbers, operators, Enter, Backspace, Escape)
+- **Ripple Animations** — Tactile button feedback with ripple effects
+- **Error Handling** — Shake animation on invalid expressions, graceful recovery
+- **Mobile Responsive** — Fluid layout down to 320px (iPhone SE 1st gen)
+- **No Dependencies** — Pure vanilla JS, no frameworks or build tools required
 
 ---
 
-## 🎨 Design Highlights
+## 📁 Project Structure
 
-- Glassmorphic container with backdrop blur
-- Color-coded buttons (numbers, operators, functions)
-- Sliding animations for history items
-- Custom scrollbar styling
-- Professional shadows and hover effects
+```
+├── index.html      # App markup & layout
+├── style.css       # Styling, animations, responsive tokens
+└── index.js        # Calculator logic + AI integration
+```
 
-### Color Palette
+---
 
-| Name   | Gradient              |
-| ------ | --------------------- |
-| Purple | `#667eea` → `#764ba2` |
-| Blue   | `#2193b0` → `#6dd5ed` |
-| Pink   | `#f093fb` → `#f5576c` |
-| Cyan   | `#4facfe` → `#00f2fe` |
-| Sunset | `#fa709a` → `#fee140` |
+## 🎨 Design
+
+Built with a dark sci-fi aesthetic using:
+
+- **Fonts**: [Orbitron](https://fonts.google.com/specimen/Orbitron) (display) + [Space Mono](https://fonts.google.com/specimen/Space+Mono) (body)
+- **Glassmorphism**: `backdrop-filter: blur(30px)` on the main card
+- **Animated background**: Radial gradients + subtle CSS grid overlay
+- **Color palette**:
+
+| Token       | Value                  | Usage           |
+| ----------- | ---------------------- | --------------- |
+| `--accent`  | `#00f5c4` (cyan-green) | Equals, results |
+| `--accent2` | `#7b61ff` (violet)     | Operators, AI   |
+| `--accent3` | `#ff6b6b` (coral)      | Clear button    |
+| `--bg`      | `#060912` (near-black) | Page background |
+
+---
+
+## 🤖 AI Integration
+
+The AI input box sends your question to the **Anthropic Claude API** (`claude-sonnet-4-20250514`).
+
+- If Claude returns a numeric answer formatted as `RESULT: [number]`, it's automatically loaded into the calculator display.
+- The explanation is shown below the input field.
+- The API call is made client-side — you'll need a valid Anthropic API key configured server-side or via a proxy.
+
+### Example prompts:
+
+- `what's 15% of 340?`
+- `how many seconds in a week?`
+- `square root of 1764`
+
+---
+
+## 📱 Responsive Breakpoints
+
+| Breakpoint | Button Height | Font Size | Padding |
+| ---------- | ------------- | --------- | ------- |
+| Default    | 62px          | 18px      | 24px    |
+| ≤ 390px    | 52px          | 16px      | 14px    |
+| ≤ 340px    | 46px          | 14px      | 12px    |
+
+---
+
+## ⌨️ Keyboard Shortcuts
+
+| Key                | Action           |
+| ------------------ | ---------------- |
+| `0–9`, `.`         | Input number     |
+| `+`, `-`, `*`, `/` | Operators        |
+| `Enter` or `=`     | Calculate        |
+| `Backspace`        | Delete last char |
+| `Escape`           | Clear all        |
+
+---
+
+## 🚀 Getting Started
+
+1. Clone or download the repo
+2. Open `index.html` in any modern browser
+3. No build step needed — it just works
+
+### Deploy for free:
+
+- **GitHub Pages** — push to a repo and enable Pages in settings
+- **Netlify** — drag and drop the folder
+- **Vercel** — connect your Git repo
 
 ---
 
@@ -52,70 +112,16 @@ A beautiful, fully-functional calculator with advanced features, built with vani
 
 ## 🔧 Customization
 
-### Change Colors
+**Change accent colors** — edit the CSS variables in `:root` inside `style.css`
 
-Find `background:` properties using `linear-gradient()` and swap out the hex codes.
+**Adjust history limit** — change `20` in `index.js`:
 
-### Modify Animations
+```js
+if (history.length > 20) history.pop();
+```
 
-Edit `@keyframes` blocks — adjust `duration`, `timing-function`, or keyframe percentages.
-
-### Adjust Layout
-
-Tweak `grid-template-columns`, `flex` properties, or `max-width` values.
-
-### Add Features
-
-JavaScript is well-commented and modular — easy to extend!
+**Modify AI behavior** — edit the `system` prompt inside `askAI()` in `index.js`
 
 ---
 
-## 🚀 Deployment
-
-### Free Hosting Options
-
-- **Netlify** — Drag and drop deployment
-- **Vercel** — Git-based deployment
-- **GitHub Pages** — Free with a GitHub account
-- **Cloudflare Pages** — Fast global CDN
-
-### Steps
-
-1. Create an account on your preferred hosting platform
-2. Upload files or connect your Git repository
-3. Deploy with one click
-4. Share your URL!
-
----
-
-## 📚 Learning Resources
-
-- [Glassmorphism](https://glassmorphism.com/)
-- [CSS Grid Guide — CSS-Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/)
-- [CSS Animations — MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations)
-- [Modern JavaScript — JavaScript.info](https://javascript.info/)
-
----
-
-## 🎯 Next Steps & Ideas
-
-1. Add a dark mode toggle
-2. Integrate real APIs for dynamic content
-3. Add user authentication
-4. Convert to a Progressive Web App (PWA)
-5. Add scientific calculator mode
-6. Implement a backend with Node.js
-7. Add payment integration (Stripe)
-
----
-
-## 📝 Notes
-
-- Built with **vanilla JavaScript** — no frameworks required
-- All projects are self-contained and well-documented
-- Use browser dev tools (F12) for debugging
-- Refer to [MDN Web Docs](https://developer.mozilla.org/) for reference
-
----
-
-_Last Updated: February 2026_
+_Built with vanilla JavaScript — no frameworks required._
